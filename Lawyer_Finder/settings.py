@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-yz1_%gc%mq_&2r20)t%!i3c0^8u%8p6nu)l54dz=r^k!0tp$#@
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'admin_dashboard.CustomUser'
 
