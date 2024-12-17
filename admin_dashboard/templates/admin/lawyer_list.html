@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lawyer List</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Lawyers</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Approved</th>
+        <th>Actions</th>
+    </tr>
+    {% for lawyer in lawyers %}
+    <tr>
+        <td>{{ lawyer.full_name }}</td>
+        <td>{{ lawyer.email }}</td>
+        <td>{{ lawyer.mobile }}</td>
+        <td>{{ lawyer.is_approved }}</td>
+        <td>
+            <a href="{% url 'admin_dashboard:approve_lawyer' lawyer.id %}">
+                {{ 'Approve' if not lawyer.is_approved else 'Reject' }}
+            </a>
+            <a href="{% url 'admin_dashboard:update_lawyer' lawyer.id %}">Edit</a>
+            <a href="{% url 'admin_dashboard:delete_lawyer' lawyer.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+</body>
+</html>

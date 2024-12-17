@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Profile</title>
+</head>
+<body>
+{% include 'nav.html' %}
+
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Update Your Profile</h2>
+    <form method="post" enctype="multipart/form-data" class="border p-4 rounded shadow bg-light">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="full_name" class="form-label">Full Name</label>
+                {{ form.full_name }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_email" class="form-label">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_mobile" class="form-label">Mobile</label>
+                {{ form.mobile }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_address" class="form-label">Address</label>
+                {{ form.address }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_specializations" class="form-label">Specializations</label>
+                {{ form.specializations }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_qualifications" class="form-label">Qualifications</label>
+                {{ form.qualifications }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_years_of_experience" class="form-label">Years of Experience</label>
+                {{ form.years_of_experience }}
+            </div>
+            <div class="col-md-6">
+                <label for="id_court_duty" class="form-label">Court Duty</label>
+                {{ form.court_duty }}
+            </div>
+            <div class="col-md-12">
+                <label for="id_profile_photo" class="form-label">Profile Photo</label>
+                {{ form.profile_photo }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">Update Profile</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
+</body>
+</html>

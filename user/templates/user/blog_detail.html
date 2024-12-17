@@ -1,0 +1,140 @@
+    {% extends 'usernav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blog.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            animation: fadeInDown 1s;
+        }
+
+        .blog-header p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .blog-content {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #495057;
+            animation: fadeInUp 1s;
+        }
+
+        .blog-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .blog-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            animation: zoomIn 1.5s;
+        }
+
+        .back-button {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button a:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    {% block content %}
+    <div class="container my-5">
+        <!-- Blog Header -->
+        <div class="blog-header">
+            <h1 class="animate__animated animate__fadeInDown">{{ blog.title }}</h1>
+            <p>By <strong>{{ blog.author.user.lawyer_profile.full_name }}</strong></p>
+        </div>
+
+        <!-- Blog Image -->
+        <div class="blog-image">
+            {% if blog.image %}
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="animate__animated animate__zoomIn">
+
+            {% endif %}
+        </div>
+
+        <!-- Blog Content -->
+        <div class="blog-content animate__animated animate__fadeInUp">
+            <p>{{ blog.content }}</p>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <a href="{% url 'read_blogs' %}">← Back to Blogs</a>
+        </div>
+    </div>
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

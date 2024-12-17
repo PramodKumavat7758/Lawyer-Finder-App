@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+  {% extends 'base.html' %}
+{% block content %}
+<h1>Admin Dashboard</h1>
+<div>
+    <p>Total Lawyers: {{ lawyer_count }}</p>
+    <p>Total Users: {{ user_count }}</p>
+    <a href="{% url 'admin_dashboard:lawyer_list' %}">Manage Lawyers</a>
+    <a href="{% url 'admin_dashboard:user_list' %}">Manage Users</a>
+</div>
+{% endblock %}
+
+</body>
+</html>

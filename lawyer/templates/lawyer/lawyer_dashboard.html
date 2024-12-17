@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <div class="container mt-5">
+        <h2 class="text-center">Lawyer Dashboard</h2>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <!-- Profile Card -->
+                <div class="card text-center animate__animated animate__fadeInDown shadow">
+                    <div class="card-body">
+                        <!-- Display Profile Photo -->
+
+
+                        <!-- Display Profile Details -->
+                        <h5 class="card-title">{{ user.lawyer_profile.full_name }}</h5>
+                        <p class="card-text">
+                            <strong>Email:</strong> {{ user.lawyer_profile.email }}<br>
+                            <strong>Mobile:</strong> {{ user.lawyer_profile.mobile }}<br>
+                            <strong>Address:</strong> {{ user.lawyer_profile.address }}<br>
+                            <strong>Specializations:</strong> {{ user.lawyer_profile.specializations }}<br>
+                            <strong>Years of Experience:</strong> {{ user.lawyer_profile.years_of_experience }}<br>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approval Status -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

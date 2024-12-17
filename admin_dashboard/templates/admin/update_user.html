@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update User</title>
+</head>
+<body>
+   {% extends 'base.html' %}
+{% block content %}
+<h1>Update User</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="{{ user.username }}">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{ user.email }}">
+    <button type="submit">Update</button>
+</form>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .blog-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: scale(1.02);
+        }
+        .blog-author {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .blog-content {
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+
+
+{% extends 'usernav.html' %}
+
+{% block content %}
+    <div class="container my-5">
+        <h1 class="text-center mb-4">All Blogs</h1>
+
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-md-4 mb-4">
+                <div class="blog-card bg-white p-3">
+                    <h5 class="blog-title">{{ blog.title }}</h5>
+                    <p class="blog-author">By {{ blog.author.user.lawyer_profile.full_name }}</p>
+                    <p class="blog-content">{{ blog.content|truncatewords:20 }}</p>
+                    <a href="{% url 'blog_detail' blog.pk %}" class="btn btn-primary btn-sm">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if blogs|length == 0 %}
+        <div class="text-center">
+            <p class="text-muted">No blogs available at the moment.</p>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
